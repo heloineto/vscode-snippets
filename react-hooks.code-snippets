@@ -1,0 +1,34 @@
+{
+  "useState": {
+    "prefix": "useState",
+    "body": [
+      "const [${1:first}, set${1/(.*)/${1:/capitalize}/}] = ${3:useState}(${2:null})"
+    ],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  },
+  "useEffect": {
+    "prefix": "useEffect",
+    "body": ["${3:useEffect}(() => {", "\t$1", "}, [$2]);"],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  },
+  "useRef": {
+    "prefix": "useRef",
+    "body": ["const $1 = ${4:useRef}<${2:HTMLDivElement}>(${3:null})"],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  },
+  "useContext": {
+    "prefix": "useContext",
+    "body": ["const ${2:{$1}} = ${5:useContext}(${4:$3Context})"],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  },
+  "useCallback": {
+    "prefix": "useCallback",
+    "body": ["const $1 = ${5:useCallback}(() => ${2:{$3}}, [$4]);"],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  },
+  "useMemo": {
+    "prefix": "useMemo",
+    "body": ["const $1 = ${5:useMemo}(() => ${2:{$3}}, [$4]);"],
+    "scope": "typescript,typescriptreact,javascript,javascriptreact"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "className": {
+    "prefix": "cl",
+    "body": ["className=\"${0:}\""],
+    "scope": "typescriptreact,javascript,javascriptreact"
+  },
+  "component": {
+    "prefix": ["component", "comp"],
+    "body": [
+      "interface Props {}",
+      "",
+      "const ${1:${TM_FILENAME_BASE/[\\.-]//g}} = (${4:props}: Props) => {",
+      "\treturn ${3:(",
+      "\t\t<div>",
+      "\t\t\t${2:${TM_FILENAME_BASE/[\\.-]//g}}",
+      "\t\t</div>",
+      "\t)};",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE/[\\.-]//g}};"
+    ],
+    "scope": "typescriptreact"
+  },
+  "svg component": {
+    "prefix": "svg",
+    "body": [
+      "import { ComponentProps } from 'react';",
+      "",
+      "interface Props extends ComponentProps<'svg'> {}",
+      "",
+      "const ${1:${TM_FILENAME_BASE/[\\.-]//g}} = (props: Props) => {",
+      "\treturn (",
+      "\t\t$0",
+      "\t);",
+      "};",
+      "",
+      "export default ${1:${TM_FILENAME_BASE/[\\.-]//g}};"
+    ],
+    "scope": "typescriptreact"
+  }
+}

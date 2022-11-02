@@ -1,0 +1,171 @@
+{
+  "Svelte Component": {
+    "prefix": ["comp", "component"],
+    "scope": "svelte, markdown",
+    "description": "Scaffold a Svelte component",
+    "body": ["<script ${2:lang=\"${1:ts}\"}>", "$0", "</script>", ""]
+  },
+  "Svelte Script Block": {
+    "prefix": "script",
+    "scope": "svelte, markdown",
+    "description": "Scaffold a Script Block",
+    "body": ["<script ${2:lang=\"${1:ts}\"}>", "$0", "</script>", ""]
+  },
+  "Svelte Component Prop": {
+    "prefix": ["prop", "export"],
+    "scope": "svelte, markdown",
+    "description": "Scaffold a Script Block",
+    "body": ["export let ${0:prop}$1;"]
+  },
+  "export { className as class }": {
+    "prefix": ["extt"],
+    "scope": "svelte, markdown",
+    "body": [
+      "let className: string | undefined = undefined;",
+      "export { className as class };"
+    ]
+  },
+  /* TEMPLATE SYNTAX */
+  "svelte: {#if ...}": {
+    "prefix": ["if", "-if"],
+    "scope": "svelte, markdown",
+    "body": ["{#if ${1:expression}}", "\t $0", "{/if}"]
+  },
+  "svelte: {:else ...}": {
+    "prefix": ["else", "-else"],
+    "scope": "svelte, markdown",
+    "body": ["{:else ${1:expression}}", "\t $0"]
+  },
+  "svelte: {:else if ...}": {
+    "prefix": ["elseif", "-elseif"],
+    "scope": "svelte, markdown",
+    "body": ["{:else if ${0:expression}}", "\t $:1"]
+  },
+  "svelte: {#each ...}": {
+    "prefix": ["each", "-each"],
+    "scope": "svelte, markdown",
+    "body": ["{#each ${1:item}s as ${1:item} (${1:item}.key) }", "\t $4", "{/each}"]
+  },
+  "Svelte Await Block": {
+    "prefix": "kitAwait",
+    "scope": "svelte, markdown",
+    "description": "Create a Svelte #await block",
+    "body": [
+      "{#await ${1:expression} }",
+      "\t",
+      "{:then ${2:name} }",
+      "\t",
+      "{:catch ${3:name} }",
+      "\t",
+      "{/await}"
+    ]
+  },
+  "Svelte Key Block": {
+    "prefix": "kitKey",
+    "scope": "svelte, markdown",
+    "description": "Create a Svelte #key block",
+    "body": ["{#key ${1:expression} }", "\t", "{/key}"]
+  },
+  "Svelte Page Title": {
+    "prefix": "kitTitle",
+    "scope": "svelte, markdown",
+    "description": "Create a title element in the document head",
+    "body": ["<svelte:head>", "\t<title>${TM_FILENAME_BASE}</title>", "</svelte:head>"]
+  },
+  "SvelteKit Load Function": {
+    "prefix": "kitLoad",
+    "scope": "svelte, javascript, markdown",
+    "description": "Create a SvelteKit Load function",
+    "body": [
+      "/** @type {import('@sveltejs/kit').Load} */",
+      "export const load = async ({ url, params, props, fetch, session, stuff, status, error }) => {",
+      "  const resourceUrl = `${1:api}`;",
+      "  const res = await fetch(resourceUrl);",
+      "",
+      "  if (res.ok) {",
+      "    return {",
+      "      status: res.status,",
+      "      props: {",
+      "         ${2:propName}: await res.json()",
+      "      }",
+      "    };",
+      "  }",
+      "",
+      "  return {",
+      "    status: res.status,",
+      "    error: new Error(`Could not load ${url}`)",
+      "  };",
+      "}"
+    ]
+  },
+  "SvelteKit TypeScript Load Function": {
+    "prefix": "kitLoadTs",
+    "scope": "svelte, javascript, markdown",
+    "description": "Create a SvelteKit TypeScript Load function",
+    "body": [
+      "import type { Load } from '@sveltejs/kit';",
+      "",
+      "/** @type {import('@sveltejs/kit').Load} */",
+      "export const load: Load = async ({ url, params, props, fetch, session, stuff, status, error }) => {",
+      "  const resourceUrl = `${1:api}`;",
+      "  const res = await fetch(resourceUrl);",
+      "",
+      "  if (res.ok) {",
+      "    return {",
+      "      status: res.status,",
+      "      props: {",
+      "         ${2:propName}: await res.json()",
+      "      }",
+      "    };",
+      "  }",
+      "",
+      "  return {",
+      "    status: res.status,",
+      "    error: new Error(`Could not load ${url}`)",
+      "  };",
+      "}"
+    ]
+  },
+  "SvelteKit Endpoint": {
+    "prefix": "kitEndpoint",
+    "scope": "javascript, markdown",
+    "description": "Create a SvelteKit Endpoint",
+    "body": [
+      "/** @type {import('@sveltejs/kit').RequestHandler} */",
+      "export const ${1|get,post,put,patch,del|} = async ({ clientAddress, locals, params, platform, request, routeId, url }) => {",
+      "  const res = await ${2:something};",
+      "",
+      "  if (res) {",
+      "    return {",
+      "      body: {",
+      "        res",
+      "      }",
+      "    };",
+      "  }",
+      "}"
+    ]
+  },
+  // Svelte Elements
+  "<svelte:head>": {
+    "prefix": ["head", ":head"],
+    "scope": "svelte, markdown",
+    "description": "Create a SvelteKit Typescript Endpoint",
+    "body": ["<svelte:head>", "\t $0", "</svelte:head>"]
+  },
+  // Other
+  "lang=\"ts\"": {
+    "prefix": ["lang", "-lang"],
+    "scope": "svelte, markdown",
+    "body": ["lang=\"${0:ts}\""]
+  },
+  "<... />": {
+    "prefix": ["/", "-/"],
+    "scope": "svelte, markdown",
+    "body": ["<$0 />"]
+  },
+  "class=\"\"": {
+    "prefix": ["cl", "class", "-cl", "-class"],
+    "scope": "svelte, markdown",
+    "body": ["class=\"$0\""]
+  }
+}
